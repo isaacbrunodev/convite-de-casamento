@@ -1,71 +1,218 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Site de Casamento - Sistema de Confirmação de Presença
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este é um sistema web desenvolvido em Laravel para gerenciar confirmações de presença em um casamento. O sistema permite que os convidados confirmem sua presença e indiquem se levarão acompanhantes.
 
-## About Laravel
+## 🚀 Funcionalidades
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Confirmação de presença online
+- Seleção de acompanhantes (limite de 1 a 3)
+- Interface intuitiva e responsiva
+- Sistema de notificação de confirmação
+- Gerenciamento de lista de convidados
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tecnologias Utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Laravel 10.x
+- PHP 8.1+
+- MySQL
+- Livewire
+- Docker
+- HTML5/CSS3
+- JavaScript/jQuery
 
-## Learning Laravel
+## 📋 Pré-requisitos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.1 ou superior
+- Composer
+- Docker e Docker Compose
+- Node.js e NPM
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🔧 Instalação
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone o repositório:
+```bash
+git clone https://github.com/isaacbrunodev/convite-de-casamento.git
+cd convite-de-casamento
+```
 
-## Laravel Sponsors
+2. Instale as dependências do PHP:
+```bash
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. Copie o arquivo de ambiente:
+```bash
+cp .env.example .env
+```
 
-### Premium Partners
+4. Configure o arquivo .env com suas configurações de banco de dados
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5. Inicie os containers Docker:
+```bash
+docker-compose up -d
+```
 
-## Contributing
+6. Execute as migrações:
+```bash
+docker-compose exec app php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. Gere a chave da aplicação:
+```bash
+docker-compose exec app php artisan key:generate
+```
 
-## Code of Conduct
+## 🌐 Endpoints da API
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Confirmação de Presença
 
-## Security Vulnerabilities
+#### `GET /confirmar-presenca`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```http
+GET /confirmar-presenca HTTP/1.1
+Host: seu-dominio.com
+Accept: text/html
+```
 
-## License
+**Resposta**
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# convite-de-casamento
-Convite para o meu casamento que fiz em Laravel e PHP
->>>>>>> d5424da509e345ccda872cfd4d5984f0068ecd44
+<html>
+  <!-- Formulário de confirmação de presença -->
+</html>
+```
+
+#### `POST /confirmar-presenca`
+
+```http
+POST /confirmar-presenca HTTP/1.1
+Host: seu-dominio.com
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "acompanhantes": 2
+}
+```
+
+**Parâmetros**
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| nome | string | Nome completo do convidado |
+| acompanhantes | integer | Número de acompanhantes (0-3) |
+
+**Resposta de Sucesso**
+```json
+{
+  "status": "success",
+  "message": "Presença confirmada com sucesso",
+  "data": {
+    "nome": "João Silva",
+    "acompanhantes": 2,
+    "confirmado": true
+  }
+}
+```
+
+### Administração de Convidados
+
+#### `GET /admin/convidados`
+
+```http
+GET /admin/convidados HTTP/1.1
+Host: seu-dominio.com
+Authorization: Bearer {seu-token}
+Accept: text/html
+```
+
+**Resposta**
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>
+  <!-- Lista de convidados confirmados -->
+</html>
+```
+
+#### `GET /admin/convidados/{id}`
+
+```http
+GET /admin/convidados/123 HTTP/1.1
+Host: seu-dominio.com
+Authorization: Bearer {seu-token}
+Accept: text/html
+```
+
+**Parâmetros da URL**
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| id | integer | ID do convidado |
+
+**Resposta**
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>
+  <!-- Detalhes do convidado específico -->
+</html>
+```
+
+**Códigos de Erro**
+| Código | Descrição |
+|--------|-----------|
+| 401 | Não autorizado - Token inválido ou expirado |
+| 403 | Proibido - Sem permissão de administrador |
+| 404 | Não encontrado - Convidado não existe |
+
+// ... rest of the existing code ...
+
+## 📦 Estrutura do Banco de Dados
+
+### Tabela: convidados
+- `id` (bigint) - Chave primária
+- `nome` (varchar) - Nome do convidado
+- `confirmado` (boolean) - Status da confirmação
+- `acompanhantes` (integer) - Número de acompanhantes
+- `created_at` (timestamp) - Data de criação
+- `updated_at` (timestamp) - Data de atualização
+
+## 🔐 Variáveis de Ambiente
+
+```env
+APP_NAME="Site de Casamento"
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=wedding_site
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes.
+
+## ✨ Contribuição
+
+1. Faça o fork do projeto
+2. Crie sua feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 👥 Autores
+
+* **Isaac Bruno** - *Desenvolvimento inicial* - [isaacbrunodev](https://github.com/isaacbrunodev)
+
+## 📞 Suporte
+
+Para suporte, envie um email para isaacbruno1996@gmail.com
