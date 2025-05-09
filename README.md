@@ -1,6 +1,10 @@
 # Site de Casamento - Sistema de Confirmação de Presença
+O site pode ser visto em https://www.isaacemayzan.site
 
 Este é um sistema web desenvolvido em Laravel para gerenciar confirmações de presença em um casamento. O sistema permite que os convidados confirmem sua presença e indiquem se levarão acompanhantes.
+![image](https://github.com/user-attachments/assets/90c515b4-2a62-4131-8e20-4f2dad7816b3)
+![image](https://github.com/user-attachments/assets/5fb5fab9-4fc3-47f5-b8a5-f676a756bd64)
+![image](https://github.com/user-attachments/assets/7b7d3da1-8fbd-4bec-b7b8-cef6525113a4)
 
 ## 🚀 Funcionalidades
 
